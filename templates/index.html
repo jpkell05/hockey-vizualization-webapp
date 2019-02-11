@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>NHL Fancy Stats Visualizer</title>
+    
+    {{ js_resources|indent(4)|safe }}
+    {{ css_resources|indent(4)|safe }}
+    {{ plot_script|indent(4)|safe }}
+  </head>
+  <body>
+<h1 align=center> NHL Stats Visulization App </h1>
+<hr>
+<div class="container">
+<p> This web app pulls hockey statistics from hockey-reference.com and creates a visualization of that data. 
+Select what data you would like to visualize and what sort of visualization you would like to use. 
+Currently, the options are limited to choosing a team and visualizing a statistic for that team over the course of 10 seasons from 2008-2018. 
+More options will be added soon. 
+<br><br>
+Note that a good Corsi For % and Fenwick For % is one that is above 50% (and in general higher is better). 
+Similarly, a good PDO (which is the sum of the save % and shooting %) is one that is above 100% (and in general higher is better).
+<br>
+<form align=center method="POST">
+  <select name="Team">
+	<option value='ANA'>Anaheim Ducks</option>
+	<option value='ARI'>Arizona Coyotes</option>
+	<option value='BOS'>Boston Bruins</option>
+	<option value='BUF'>Buffalo Sabres</option>
+	<option value='CAR'>Carolina Hurricanes</option>
+	<option value='CBJ'>Columbus Blue Jackets</option>
+	<option value='CGY'>Calgary Flames</option>
+	<option value='CHI'>Chicago Blackhawks</option>
+	<option value='COL'>Colorado Avalanche</option>
+	<option value='DAL'>Dallas Stars</option>
+	<option value='DET'>Detroit Red Wings</option>
+	<option value='EDM'>Edmonton Oilers</option>
+	<option value='FLA'>Florida Panthers</option> 
+	<option value='LAK'>Los Angeles Kings</option> 
+	<option value='MIN'>Minnesota Wild</option> 
+	<option value='MTL'>Montreal Canadiens</option> 
+	<option value='NJD'>New Jersey Devils</option> 
+	<option value='NSH'>Nashville Predators</option> 
+	<option value='NYI'>New York Islanders</option> 
+	<option value='NYR'>New York Rangers</option> 
+	<option value='OTT'>Ottawa Senators</option> 
+	<option value='PHI'>Philadelphia Flyers</option> 
+	<option value='PIT'>Pittsburgh Penguins</option> 
+	<option value='SJS'>San Jose Sharks</option> 
+	<option value='STL'>St. Louis Blues</option> 
+	<option value='TBL'>Tampa Bay Lightning</option> 
+	<option value='TOR'>Toronto Maple Leafs</option> 
+	<option value='VAN'>Vancouver Canucks</option> 
+	<option value='VEG'>Vegas Golden Knights</option> 
+	<option value='WPG'>Winnipeg Jets</option> 
+	<option value='WSH'>Washington Capitals</option> 
+  </select>
+  <br><br>
+  <select name="Stat">
+    <option value="Corsi For %">Corsi For %</option>
+    <option value="Fenwick For %">Fenwick For %</option>
+    <option value="PDO (S% + SV%)">PDO</option>
+  </select>
+<br><br>
+  <input type="submit">
+</form>
+</div>
+<br><br>
+<div class="container">
+<div align='center'>
+{{ plot_div|indent(4)|safe }}
+</div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
